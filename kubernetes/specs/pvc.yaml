@@ -3,12 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: task-pv-claim
 spec:
-  storageClassName: manual
-  selectors:
-    matchLabel: 
+  selector:
+    matchLabels: 
       type: local
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 3Mi
+  

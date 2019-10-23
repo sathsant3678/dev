@@ -24,6 +24,5 @@ spec:
       name: cache-volume
   volumes:
   - name: cache-volume
-    hostPath: 
-      path: /opt
-
+    persistentVolumeClaim:
+        claimName: task-pv-claim
