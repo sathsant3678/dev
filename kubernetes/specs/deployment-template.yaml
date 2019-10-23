@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ replicas: 2
+ template:
+  metadata:
+   labels:
+    app: nginx
+    tier: frontend
+    environment: production
+    track: stable/canary/blue/green
+  spec:
+   strategy: RollingUpdate/Recreate
+   containers:
+   - name: nginx
+     image: nginx:1.7.9
+     ports:
+     - containerPort: 80
+     resources:
+      limits:
+       memory: 200Mi
+     requests:
+      cpu: 1
+      memory: 200Mi
+     livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 5
+      periodSeconds: 5

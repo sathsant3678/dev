@@ -1,0 +1,12 @@
+# kubernetes spec file template
+apiVersion: <indicates the api version for the specific type>
+kind: <type of object being described>
+
+metadata:
+  name:
+
+  labels:
+    <metadata about the object used for indetification>
+
+spec:
+    <description of the object>
